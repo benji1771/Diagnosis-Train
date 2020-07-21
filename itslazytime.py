@@ -12,7 +12,7 @@ for files in os.listdir():
             diagn = doc.paragraphs[num].text
             if 'diagnosis' in diagn:
                 break
-        sub = re.search('diagnosis is (.*?)\.', diagn)
+        sub = re.search('diagnosis of (.*?)\.', diagn)
         if sub is not None:
             subStr = sub.group(1)
             ar = re.split(',', subStr)
