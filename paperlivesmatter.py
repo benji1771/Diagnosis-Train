@@ -7,7 +7,7 @@ from tkinter import filedialog, Text
 root = tk.Tk()
 dokos = []
 
-canvas = tk.Canvas(root, height = 150, width = 150, bg='#5BCF8C')
+canvas = tk.Canvas(root, height = 150, width = 200, bg='#5BCF8C')
 canvas.pack()
 frame = tk.Frame(root, bg='#B5E771')
 frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
@@ -22,20 +22,20 @@ def runIt():
     allDiagn = Document()
     for files in os.listdir():
         if files.endswith('docx'):
-            if files != 'All The Diagnosis.docx':
+            if files != 'All The Diagnoses.docx':
                 doc = Document(files)
                 diagn = ''
-                for num in range (3):
+                for num in range (4):
                     diagn = doc.paragraphs[num].text
-                    if 'diagnosis' in diagn:
+                    if 'diagnoses' in diagn:
                         break
-                sub = re.search('diagnosis of (.*?)\.', diagn)
+                sub = re.search('diagnoses of (.*?)\.', diagn)
                 if sub is not None:
                     subStr = sub.group(1)
                     ar = re.split(',', subStr)
                     allDiagn.add_paragraph(files.replace(".docx", ":") + '\n' + '|'.join(ar))
-    allDiagn.save("All The Diagnosis.docx")
-    os.startfile("All The Diagnosis.docx")
+    allDiagn.save("All The Diagnoses.docx")
+    os.startfile("All The Diagnoses.docx")
 label = tk.Label(frame, text="I LOVE YOUUU MWUAH~")
 label.pack()
 runAll = tk.Button(root, text='Run For All Documents', command=runIt)
