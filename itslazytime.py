@@ -6,7 +6,7 @@ from tkinter import filedialog, Text
 
 root = tk.Tk()
 root.title('Failure')
-root.geometry("300x400")
+root.geometry("300x350")
 root.configure(background='#f5776e')
 dokos = []
 
